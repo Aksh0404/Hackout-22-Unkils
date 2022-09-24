@@ -66,6 +66,7 @@ file = open('input_text', 'w')
 file.write(extracted_text)
 
 # Processing Part
+
 translate_dict = { ' ':'/', 'A':'.-', 'B':'-...',
                     'C':'-.-.', 'D':'-..', 'E':'.',
                     'F':'..-.', 'G':'--.', 'H':'....',
@@ -100,4 +101,5 @@ def play_morse_code(message):
             print("Invalid")    
 
 print(message)
-play_morse_code(message)
+play_morse_code(message) 
+
