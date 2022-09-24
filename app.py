@@ -4,6 +4,8 @@ import cv2
 from PIL import Image
 import speech_recognition as sr
 import pytesseract as tr
+from playsound import playsound
+import time
 
 
 # for input as per users concert
@@ -64,3 +66,38 @@ file = open('input_text', 'w')
 file.write(extracted_text)
 
 # Processing Part
+translate_dict = { ' ':'/', 'A':'.-', 'B':'-...',
+                    'C':'-.-.', 'D':'-..', 'E':'.',
+                    'F':'..-.', 'G':'--.', 'H':'....',
+                    'I':'..', 'J':'.---', 'K':'-.-',
+                    'L':'.-..', 'M':'--', 'N':'-.',
+                    'O':'---', 'P':'.--.', 'Q':'--.-',
+                    'R':'.-.', 'S':'...', 'T':'-',
+                    'U':'..-', 'V':'...-', 'W':'.--',
+                    'X':'-..-', 'Y':'-.--', 'Z':'--..',
+                    '1':'.----', '2':'..---', '3':'...--',
+                    '4':'....-', '5':'.....', '6':'-....',
+                    '7':'--...', '8':'---..', '9':'----.',
+                    '0':'-----', ', ':'--..--', '.':'.-.-.-',
+                    '?':'..--..', '/':'-..-.', '-':'-....-',
+                    '(':'-.--.', ')':'-.--.-'}
+
+message = input("Enter your message: ")
+message = " ".join(translate_dict[c] for c in message.upper())
+
+
+def play_morse_code(message):
+    for c in message:
+        if c == ".":
+            playsound("dot.mp3")
+            #time.sleep(0.3)
+        elif c == "-":
+            playsound("dash.mp3")
+            #time.sleep(0.3)    
+        elif c =="/" or c == " ":
+            time.sleep(0.5)    
+        else:
+            print("Invalid")    
+
+print(message)
+play_morse_code(message)
