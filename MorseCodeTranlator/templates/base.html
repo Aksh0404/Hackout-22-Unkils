@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="STXQL24Dv-k37XbAkQxuZtmPGIjXkisaWJ5pSLENuXg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="{{ url_for('static',filename='script/nav_bar.js')}}"></script>
+    <link rel="shortcut icon" href="{{url_for('static',filename='image/favicon.ico')}}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css')}}">
+    <title>{% block title %} {% endblock title %} - MorseCodeTranslater</title>
+    <script data-ad-client="ca-pub-4818170421440239" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+{% block body %} {% endblock body %}
+
+<body>
+    <div class="topnav" id="myTopnav">
+        <a id="Home" href="/">Home</a>
+        <a href="javascript:void(0);" class="icon" onclick="repo_nav()">
+            <i class="fa fa-bars"></i>
+        </a>
+        <div id="toggle">
+            <i class="indicator"></i>
+        </div>
+        
+    </div>
+    <div class="content" id="content">
+        {% block content %}{% endblock content %}
+    </div>
+    <footer>
+      <h3 class="footer" style="text-align: center; margin-top: 150px; margin-bottom: 10px;">Built at Hackout22</h3>
+      <h4 class="footer" style="text-align: center; margin-top: 5px; margin-bottom: 5px;">By Unkils</h4>
+    </footer>
+</body>
+<!-- <div class="push"></div>
+<div class="footer">
+    footer
+</div> -->
+
+<script>
+    const body = document.querySelector('body');
+    const topnav = document.getElementById('myTopnav')
+    const topnavA = document.querySelectorAll('a')
+    const toggle = document.getElementById('toggle');
+    const content = document.getElementById('content');
+    const container = document.getElementById('container')
+    const a = document.querySelectorAll('a')
+    window.onload = function() {
+        theme = localStorage.getItem('theme');
+        if(theme == null) {
+            localStorage.setItem('theme', 'light');
+        }
+        if(theme == 'dark') {
+            changes()
+        }
+    }
+
+    toggle.onclick = function() {
+        theme = localStorage.getItem('theme')
+        console.log(theme)
+        if(theme == 'light') {
+            localStorage.setItem('theme','dark')
+        }
+        if(theme == 'dark') {
+            localStorage.setItem('theme','light')
+        }
+        if(theme == 'light') {
+            changes()
+        }
+        if(theme == 'dark') {
+            changes()
+        }
+    }
+
+    function changes(){
+            console.log('thai gayo')
+            toggle.classList.toggle('active')
+            body.classList.toggle('active')
+            topnav.classList.toggle('active')
+            content.classList.toggle('active')
+            container.classList.toggle('active')
+            a.classList.add('active')
+        }
+    
+    
+</script>
+
+</body>
+
+</html>

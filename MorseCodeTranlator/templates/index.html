@@ -1,0 +1,55 @@
+{% extends 'base.html' %} {% block title %} Home{% endblock title %} {% block
+body %}
+
+<body onload="active('Home')">
+  {% endblock body %} {% block content %}
+  <br />
+  <div class="container" id="container">
+    <form method="POST">
+      <div class="row">
+        <div class="col-25">
+          <label for="subject">Enter Message to Encode</label>
+        </div>
+        <div class="col-75">
+          <textarea
+            id="code"
+            spellcheck="false"
+            onKeyDown="javascript: var key = event.keyCode || event.charCode || event.which ; backspace(key); "
+            class="code"
+            name="code"
+            placeholder="Type text to translate.... "
+            style="height: 80px"
+          ></textarea>
+        </div>
+
+        <br />
+
+        <div class="col-25">
+          <label for="subject">Morce code</label>
+        </div>
+        <div id="outputs">
+          <div class="col-75">
+            <textarea
+              disabled
+              id="output"
+              placeholder="Morse code appear here..... '/' means &lt;space&gt; or New word and '|' means new line"
+              name="output"
+              id="output"
+              style="padding: 12px"
+            >
+{{str}}</textarea
+            >
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <script src="{{url_for('static',filename='script/app.js')}}"></script>
+    {% endblock content %}
+  </div>
+</body>
